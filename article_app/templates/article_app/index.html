@@ -1,0 +1,17 @@
+{% extends 'article_app/base.html' %}
+
+{% block meta_title %}Main page{% endblock meta_title %}
+
+{% block title %}Articles{% endblock title %}
+
+{% block content %}
+    {% if object_list %}
+    <ul>
+        {% for article in object_list %}
+            <li>{{ article.header }} </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        Article no yet
+    {% endif %}
+{% endblock content %}
