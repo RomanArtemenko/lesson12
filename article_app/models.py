@@ -22,6 +22,10 @@ class ArticleManager(models.Manager):
 
     def canceled(self):
         return super().get_queryset().filter(state=Article.STATE_CANCELED).order_by('timestamp_create')
+
+    def owner(self, id):
+        return super().get_queryset().filter(owner=id)
+        
         
 class Article(models.Model):
     STATE_REVIEW = 0

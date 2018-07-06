@@ -4,7 +4,6 @@ from . import views
 from .views import ArticleLiveListView
 
 urlpatterns = [
-    # path('', views.index, name='index'),
     path('', ArticleLiveListView.as_view(), name='index'),
     # path('list', views.catalog, name='list_short_url'),
     # path('<int:shortly_id>/detail', views.detail, name='detail'),
