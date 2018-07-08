@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
 from .models import Article, Category
+from django.contrib.auth.models import User
 from .forms import ArticleCreateForm, ArticleEditForm, CategoryForm
 
 
@@ -10,16 +11,18 @@ from .forms import ArticleCreateForm, ArticleEditForm, CategoryForm
 #     return render(request, 'article_app/index.html', {})
 
 class ArticleLiveListView(ListView):
-    queryset = Article.objects.live()
+    print(type(User.pk))
+    # print(int(User.pk))
+    queryset = Article.objects.owner(1) 
     template_name = 'article_app/index.html'
 
 class ArticleModerationListView(ListView):
     queryset = Article.objects.review()
     template_name = 'article_app/moderation.html'
 
-class ArticleUserListView(ListView):
-    queryset = Article.objects.review()
-    template_name = 'article_app/moderation.html'
+# class ArticleUserListView(ListView):
+#     queryset = Article.objects.owner(User.pk)
+#     template_name = 'article_app/moderation.html'
 
 class ArticleUpdateView(UpdateView):
     form_class = ArticleEditForm

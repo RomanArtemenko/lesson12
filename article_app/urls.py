@@ -5,8 +5,13 @@ from .views import ArticleLiveListView
 
 urlpatterns = [
     path('', ArticleLiveListView.as_view(), name='index'),
-    # path('list', views.catalog, name='list_short_url'),
-    # path('<int:shortly_id>/detail', views.detail, name='detail'),
-    # path('<int:shortly_id>', views.follow_link, name='follow_link'),
-    # path('new', views.new, name='new'),
+    #Category
+    path('/category', ArticleLiveListView.as_view(), name='category-list'),
+    path('/category/add', ArticleLiveListView.as_view(), name='category-add'),
+    #Article
+    path('/artycle', ArticleLiveListView.as_view(), name='article-list'),
+    path('/article/add', ArticleLiveListView.as_view(), name='article-add'),
+    path('/article/moderation', ArticleLiveListView.as_view(), name='article-moderation'),
+    path('/article/<int:article_id>/detail', ArticleLiveListView.as_view(), name='article-detail'),
+    path('/article/my', ArticleLiveListView.as_view(), name='article-my'),
 ]
