@@ -31,9 +31,10 @@
           <ul class="nav navbar-nav"> 
             <li class="active"> <a class="navbar-brand" href="{% url 'index' %}">Blog</a> </li>
             {% if user.is_authenticated %}
-              <li ><a href=#>New category</a></li>
-              <li ><a href=#>Moderation</a></li>
-              <li ><a href=#>My articles</a></li>
+              <li ><a href="{% url 'category-list' %}">Categories</a></li>
+              <li ><a href="{% url 'category-add' %}">New category</a></li>
+              <li ><a href="{% url 'article-moderation' %}">Moderation</a></li>
+              <li ><a href="{% url 'article-user' %}">My articles</a></li>
             {% endif %}
           </ul>
         </div>

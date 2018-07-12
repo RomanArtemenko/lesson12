@@ -1,0 +1,26 @@
+{% extends 'article_app/base.html' %}
+
+{% block meta_title %}Main page{% endblock meta_title %}
+
+{% block title %}Articles{% endblock title %}
+
+{% block content %}
+    {% if object_list %}
+        <div class="row">
+
+            <div class="col-sm-8 blog-main">
+                {% for article in object_list %}
+                    <div class="blog-post">
+                        <h2 class="blog-post-title">{{ article.header }}</h2> 
+                        <p class="blog-post-meta">{{ article.timestamp_create }} by <a href="#">{{ article.owner }}</a></p>
+
+                        <p>{{ article.text }}</p>
+                    </div><!-- /.blog-post -->
+                {% endfor %}
+            </div><!-- /.blog-main -->
+
+        </div><!-- /.row -->
+    {% else %}
+        Article no yet
+    {% endif %}
+{% endblock content %}

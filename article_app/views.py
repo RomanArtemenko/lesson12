@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
 from .models import Article, Category
@@ -11,30 +12,35 @@ from .forms import ArticleCreateForm, ArticleEditForm, CategoryForm
 #     return render(request, 'article_app/index.html', {})
 
 class ArticleLiveListView(ListView):
-    print(type(User.pk))
+    # print(type(User.pk))
     # print(int(User.pk))
-    queryset = Article.objects.owner(1) 
+    queryset = Article.objects.live()
     template_name = 'article_app/index.html'
 
 class ArticleModerationListView(ListView):
     queryset = Article.objects.review()
-    template_name = 'article_app/moderation.html'
+    template_name = 'article_app/moderation_article.html'
 
-# class ArticleUserListView(ListView):
-#     queryset = Article.objects.owner(User.pk)
-#     template_name = 'article_app/moderation.html'
+class ArticleUserListView(ListView):
+    queryset = Article.objects.owner(1)
+    template_name = 'article_app/my_article.html'
 
 class ArticleUpdateView(UpdateView):
     form_class = ArticleEditForm
-    template_name = 'article_app/add_category.html'
-    success_url = 'moderation'
+    template_name = 'article_app/edit_article.html'
+    success_url = reverse_lazy('article-moderation')
 
 class ArticleCreateView(CreateView):
     form_class = ArticleCreateForm
     template_name = 'article_app/add_article.html'
-    success_url = 'user-article'
+    success_url = reverse_lazy('article-user')
+    
 
 class CategoryCreateView(CreateView):
     form_class = CategoryForm
     template_name = 'article_app/add_category.html'
-    success_url = 'xxx'
+    success_url = reverse_lazy('category-list')
+
+class CategoryListView(ListView):
+    template_name = 'article_app/category.html'
+    model = Category 
