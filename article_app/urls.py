@@ -10,7 +10,7 @@ urlpatterns = [
     path('category/add', CategoryCreateView.as_view(), name='category-add'),
     #Article
     path('artycle', ArticleLiveListView.as_view(), name='article-list'),
-    path('article/add', ArticleLiveListView.as_view(), name='article-add'),
+    path('article/add', ArticleCreateView.as_view(), name='article-add'),
     path('article/moderation', ArticleModerationListView.as_view(), name='article-moderation'),
     path('article/<int:article_id>/detail', ArticleLiveListView.as_view(), name='article-detail'),
     path('article/my', ArticleUserListView.as_view(), name='article-user'),
