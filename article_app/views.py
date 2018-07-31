@@ -34,6 +34,10 @@ class ArticleCreateView(CreateView):
     form_class = ArticleCreateForm
     template_name = 'article_app/add_article.html'
     success_url = reverse_lazy('article-user')
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
     
 
 class CategoryCreateView(CreateView):
