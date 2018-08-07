@@ -1,0 +1,15 @@
+{% extends 'article_app/base.html' %}
+
+{% block meta_title %}Sign Out{% endblock meta_title %}
+
+{% block title %}Sign Out{% endblock title %}
+
+{% load bootstrap3 %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-red">Sign Out</button>
+    </form>
+{% endblock content %}

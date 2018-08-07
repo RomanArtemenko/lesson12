@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views.generic import View
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
 from .models import Article, Category
@@ -12,8 +13,6 @@ from .forms import ArticleCreateForm, ArticleEditForm, CategoryForm
 #     return render(request, 'article_app/index.html', {})
 
 class ArticleLiveListView(ListView):
-    # print(type(User.pk))
-    # print(int(User.pk))
     queryset = Article.objects.live()
     template_name = 'article_app/index.html'
 
@@ -48,3 +47,12 @@ class CategoryCreateView(CreateView):
 class CategoryListView(ListView):
     template_name = 'article_app/category.html'
     model = Category 
+
+class SignInView(View):
+    pass
+
+class SignUpView(View):
+    pass
+
+class SignOutView(View):
+    pass

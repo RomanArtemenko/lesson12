@@ -1,0 +1,15 @@
+{% extends 'article_app/base.html' %}
+
+{% block meta_title %}Sign Up{% endblock meta_title %}
+
+{% block title %}Sign Up{% endblock title %}
+
+{% load bootstrap3 %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-red">Sign Up</button>
+    </form>
+{% endblock content %}

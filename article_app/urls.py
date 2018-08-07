@@ -14,4 +14,8 @@ urlpatterns = [
     path('article/moderation', ArticleModerationListView.as_view(), name='article-moderation'),
     path('article/<int:article_id>/detail', ArticleLiveListView.as_view(), name='article-detail'),
     path('article/my', ArticleUserListView.as_view(), name='article-user'),
+    #Auth
+    path('auth/signin', , name='sign-in'),
+    path('auth/signup', , name='sign-up'),
+    path('auth/signout', , name='sign-out'),
 ]
